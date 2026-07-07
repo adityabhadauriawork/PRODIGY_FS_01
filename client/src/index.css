@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #030303;
+  color: white;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   Animated Background
+================================ */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(139,92,246,.18), transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(59,130,246,.16), transparent 25%),
+    radial-gradient(circle at 50% 95%, rgba(168,85,247,.12), transparent 30%);
+
+  animation: backgroundMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+
+    from{
+        transform:translateY(0px) scale(1);
+    }
+
+    to{
+        transform:translateY(-80px) scale(1.08);
+    }
+
+}
+
+/* ===============================
+        Glass Card
+================================ */
+
+.glass{
+
+position:relative;
+
+overflow:hidden;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:
+
+0 10px 40px rgba(0,0,0,.45),
+
+0 0 30px rgba(139,92,246,.15);
+
+transition:.4s;
+
+}
+
+.glass:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+
+0 0 40px rgba(139,92,246,.35),
+
+0 0 90px rgba(59,130,246,.18);
+
+}
+
+/* ===============================
+ Animated Border
+================================ */
+
+.glass::before{
+
+content:"";
+
+position:absolute;
+
+inset:-2px;
+
+border-radius:inherit;
+
+padding:2px;
+
+background:
+
+linear-gradient(
+90deg,
+
+transparent,
+
+#8b5cf6,
+
+#3b82f6,
+
+#8b5cf6,
+
+transparent
+
+);
+
+background-size:300%;
+
+animation:borderMove 5s linear infinite;
+
+mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+mask-composite:exclude;
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+
+pointer-events:none;
+
+}
+
+@keyframes borderMove{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+/* ===============================
+Inputs
+================================ */
+
+input{
+
+transition:.3s;
+
+}
+
+input:focus{
+
+border-color:#8b5cf6 !important;
+
+box-shadow:
+
+0 0 18px rgba(139,92,246,.35);
+
+}
+
+/* ===============================
+Scrollbar
+================================ */
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#6d28d9;
+
+border-radius:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
